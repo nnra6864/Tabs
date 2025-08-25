@@ -14,9 +14,9 @@ namespace Tabs
         {
             public Color Color;
             public float Time;
-            public Easings.Type Easing;
+            public EasingType Easing;
 
-            public Transition(Color color = default, float time = 0.5f, Easings.Type easing = Easings.Type.CubicOut)
+            public Transition(Color color = default, float time = 0.5f, EasingType easing = EasingType.CubicOut)
             {
                 Color = color;
                 Time = time;
@@ -26,7 +26,8 @@ namespace Tabs
 
         [SerializeField] private Graphic _graphic;
 
-        [SerializeField] private Transition
+        [SerializeField]
+        private Transition
             _noneTransition = new(new(0, 0, 0, 0.1f)),
             _hoveredTransition = new(new(0, 0, 0, 0.2f)),
             _pressedTransition = new(new(0, 0, 0, 0.3f)),
@@ -36,7 +37,7 @@ namespace Tabs
         {
             _graphic = GetComponent<Graphic>();
         }
-        
+
         protected override void Awake()
         {
             base.Awake();
@@ -54,7 +55,7 @@ namespace Tabs
                 _changeColorRoutine = null;
                 yield break;
             }
-            
+
             var transition = State switch
             {
                 State.Hovered => _hoveredTransition,
