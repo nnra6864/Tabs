@@ -68,7 +68,7 @@ namespace Tabs
             float lerpPos = 0;
             while (lerpPos < 1)
             {
-                var t = Misc.Tween(ref lerpPos, transition.Time, transition.Easing, true);
+                var t = Misc.Tween(ref lerpPos, transition.Time, transition.Easing, unscaled: true);
                 _graphic.color = Color.Lerp(startColor, transition.Color, t);
                 yield return null;
             }
